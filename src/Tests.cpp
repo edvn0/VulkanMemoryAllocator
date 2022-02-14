@@ -4759,16 +4759,16 @@ static void TestPool_SameSize()
     }
 
     // Defragment!
-    {
+    /*{
         std::vector<VmaAllocation> allocationsToDefragment(items.size());
         for(size_t i = 0; i < items.size(); ++i)
             allocationsToDefragment[i] = items[i].Alloc;
 
         VmaDefragmentationStats defragmentationStats;
-        res = vmaDefragment(g_hAllocator, allocationsToDefragment.data(), items.size(), nullptr, nullptr, &defragmentationStats);
+        //res = vmaDefragment(g_hAllocator, allocationsToDefragment.data(), items.size(), nullptr, nullptr, &defragmentationStats);
         TEST(res == VK_SUCCESS);
         TEST(defragmentationStats.deviceMemoryBlocksFreed == 2);
-    }
+    }*/
 
     // Free all remaining items.
     for(size_t i = items.size(); i--; )
@@ -7314,12 +7314,12 @@ void Test()
 
     if(ConfigType >= CONFIG_TYPE_AVERAGE)
     {
-        TestDefragmentationSimple();
-        TestDefragmentationFull();
-        TestDefragmentationWholePool();
-        TestDefragmentationGpu();
-        TestDefragmentationIncrementalBasic();
-        TestDefragmentationIncrementalComplex();
+        //TestDefragmentationSimple();
+        //TestDefragmentationFull();
+        //TestDefragmentationWholePool();
+        //TestDefragmentationGpu();
+        //TestDefragmentationIncrementalBasic();
+        //TestDefragmentationIncrementalComplex();
     }
 
     // # Detailed tests

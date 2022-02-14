@@ -11067,7 +11067,7 @@ VmaVirtualBlock_T::VmaVirtualBlock_T(const VmaVirtualBlockCreateInfo& createInfo
     switch (algorithm)
     {
     case 0:
-        m_Metadata = vma_new(GetAllocationCallbacks(), VmaBlockMetadata_Generic)(VK_NULL_HANDLE, 1, true);
+        m_Metadata = vma_new(GetAllocationCallbacks(), VmaBlockMetadata_TLSF)(VK_NULL_HANDLE, 1, true);
         break;
     case VMA_VIRTUAL_BLOCK_CREATE_BUDDY_ALGORITHM_BIT:
         m_Metadata = vma_new(GetAllocationCallbacks(), VmaBlockMetadata_Buddy)(VK_NULL_HANDLE, 1, true);
@@ -11575,7 +11575,7 @@ void VmaDeviceMemoryBlock::Init(
         VMA_ASSERT(0);
         // Fall-through.
     case 0:
-        m_pMetadata = vma_new(hAllocator, VmaBlockMetadata_Generic)(hAllocator->GetAllocationCallbacks(),
+        m_pMetadata = vma_new(hAllocator, VmaBlockMetadata_TLSF)(hAllocator->GetAllocationCallbacks(),
             bufferImageGranularity, false); // isVirtual
     }
     m_pMetadata->Init(newSize);
